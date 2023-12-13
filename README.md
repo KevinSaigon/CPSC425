@@ -1,4 +1,4 @@
-# CPSC425
+# CPSC425 (2023W1)
 
 As a friend once told me "you can either pay me in cash, or in kind". But I'm not interested in money - I'm interested in Stars, baby! 
 
