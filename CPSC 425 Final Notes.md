@@ -133,13 +133,11 @@
 
     - note: this is for a pinhole system, in the lens system, we have to slightly modify the camera matrix
       $$
-      \begin{align*}
       C &= \begin{bmatrix}
       f_x^\prime &0 &0 &c_x\\
       0 &f_y^\prime &0 &c_y \\
       0 &0 &1  &0
       \end{bmatrix}
-      \end{align*}
       $$
 
   - when you do this kind of projection, you try to simulate the feeling of 'depth' by altering the projected points a bit on the image surface (i.e vanishing points)
@@ -2171,7 +2169,7 @@
     <img src="pictures/image-20231207205437621.png" alt="image-20231207205437621" style="zoom:80%;" /> 
 
     - note: $W_R(d)$ is referring to a patch $W_R$ that is $d$ distance away from $W_L$
-    - note: the dot in the correlation equation is the <u>dot product</u> 
+    - note: the dot in the correlation equation is the <u>dot product</u> (higher = better)
 
 - effects of window size
 
@@ -2661,10 +2659,15 @@
 
       <img src="pictures/image-20231202163303645.png" alt="image-20231202163303645" style="zoom:50%;" /> 
 
-      - $W$ will be a weight **<u>matrix</u>** &rightarrow; where each row (i.e $w_1$) is the weights for the classifier for that class (i.e class 1)
+      - $W$ will be a weight **<u>matrix</u>** 
 
+      - $W$ dimensions will be $(d \times k)$ where $d$ is the number of features (dimension of input) and $k$ is the number of classes (this is opposite from NN that we'll see later)
+        - apparently this is just convention idk 
+    
+      - where each column (i.e $w_1$) is the weights for the classifier for that class (i.e class 1)
+    
       - you can solve the equation using the Least Squares
-
+    
     - advantages: more scalable and uses all available data (which can lead to a more robust understanding of each class compared to the 1-vs-1 approach, where each classifier only sees data from two classes)
 
 - polynomial fitting 
@@ -3127,6 +3130,14 @@
   - max pooling helps the network to become invariant to small translations of the input image
   - also noise suppression and emphasizes dominant features &rightarrow; possible help prevent overfitting
   - (also adds non-linearity because max is non-linear)
+
+- note: backward pass of cross-correlation is actually a convolution (so simple to implement)
+
+  - forward pass: when you apply a convolutional layer to input data, you perform a cross-correlation operation between the input data and the convolutional kernel (filter)
+    - this serves as a way to extra features from the input
+
+  - backward pass: the gradient computation can be done by flipping the kernel and applying cross-correlation operation between the input and the (now flipped) kernel
+
 
 # Colour
 
